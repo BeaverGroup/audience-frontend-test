@@ -1,4 +1,4 @@
-describe("", () => {
+describe("Login/Register Account", () => {
   beforeEach(() => {
     cy.visit("/");
   });
@@ -7,5 +7,31 @@ describe("", () => {
     cy.visit("/sign-up");
     cy.get("#Email").type("vvtest1@gmail.com", { force: true });
     cy.get("#Name").type("vvtest1", { force: true });
+    cy.get("#select1").select("Female");
+    cy.get("#Age").type("20", { force: true });
+    cy.get("#select2").select("Thailand");
+    cy.get("#Password").type("password", { force: true });
+    cy.get("#Confirm-Password").type("password", { force: true });
+    cy.get("#button_submit").click();
   });
+
+  it("Log in by sign in a new account but wrong email format", () => {
+    cy.visit("/sign-up");
+    cy.get("#Email").type("vvtest1", { force: true });
+    cy.get("#Name").type("vvtest1", { force: true });
+    cy.get("#select1").select("Female");
+    cy.get("#Age").type("20", { force: true });
+    cy.get("#select2").select("Thailand");
+    cy.get("#Password").type("password", { force: true });
+    cy.get("#Confirm-Password").type("password", { force: true });
+    cy.get("#button_submit").click();
+    cy.url().should('eq', 'http://localhost:4001/sign-up') // still on sign up page
+  });
+
+  it("Log in by having an account", () => {
+    cy.visit("/");
+    cy.get("#Email").type("vvtest@gmail.com", { force: true });
+    cy.get("#password").type("password", { force: true });
+    cy.get("#button_auth").click();
+  })
 });
