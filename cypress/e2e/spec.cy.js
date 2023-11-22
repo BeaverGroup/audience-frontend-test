@@ -25,7 +25,7 @@ describe("Login/Register Account", () => {
     cy.get("#Password").type("password", { force: true });
     cy.get("#Confirm-Password").type("password", { force: true });
     cy.get("#button_submit").click();
-    cy.url().should('eq', 'http://localhost:4001/sign-up') // still on sign up page
+    cy.url().should("eq", "http://localhost:4001/sign-up"); // still on sign up page
   });
 
   it("Log in by having an account", () => {
@@ -33,5 +33,21 @@ describe("Login/Register Account", () => {
     cy.get("#Email").type("vvtest@gmail.com", { force: true });
     cy.get("#password").type("password", { force: true });
     cy.get("#button_auth").click();
-  })
+  });
+
+  it("Log in by having an account but invalid email or password", () => {
+    cy.visit("/");
+    cy.get("#Email").type("vvtest@gmail.com", { force: true });
+    cy.get("#password").type("passwordkkk", { force: true });
+    cy.get("#button_auth").click();
+    cy.get("#swal2-title").should("contain", "Password or Email is wrong");
+  });
+
+  // it("Log in by Google Account", () => {
+  //   cy.visit("/");
+  //   cy.get("#container_auth_button > div").click();
+  //   cy.origin("https://accounts.google.com/", () => {
+  //     cy.get("#identifierId").type(Cypress.env('google_email'))
+  //   });
+  // });
 });
