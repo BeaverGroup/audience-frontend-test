@@ -12,26 +12,26 @@ describe("Home page detail", () => {
         .should('exist') 
     });
 
-    // it("Can go to the Upcoming Detail page", () => {
-    //     cy.get('.upcoming')
-    //         .should('exist') 
-    //         .click();
+    it("Can go to the Upcoming Detail page", () => {
+        cy.get('.upcoming-title')
+            .should('exist') 
+            .click();
 
-    //     cy.url().should('include', '/upcoming'); 
-    // });
+        cy.url().should('include', '/upcoming'); 
+    });
 
     it("Can see sport result", () => {
         cy.get(".sport-result-card")
         .should('exist')
     })
 
-    // it("Can go to sport result page", () => {
-    //     cy.get(".sport-result-card")
-    //     .should('exist')
-    //     .click()
+    it("Can go to sport result page", () => {
+        cy.get("#root > div.homepage > div.section-2 > div.news-section > div.result-box > div > a > h1")
+        .should('exist')
+        .click()
 
-    //     cy.url().should('include', '/subscribe'); 
-    // })
+        cy.url().should('include', '/subscribe'); 
+    })
 
     // it("Can subscribe sport from Homepage", () => {
 
