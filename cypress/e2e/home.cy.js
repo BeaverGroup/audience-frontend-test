@@ -33,11 +33,19 @@ describe("Home page detail", () => {
         cy.url().should('include', '/subscribe'); 
     })
 
-    // it("Can subscribe sport from Homepage", () => {
+    it("Can subscribe sport from Homepage", () => {
+        cy.wait(1000);
+        cy.visit("/subscribe");
+        cy.get("#root > div.subscribes > div.sport-bar > div > div > div:nth-child(1)").should("not.exist")
 
-    //     cy.get("#Tennis")
-    //     .click()
-    // })
+        cy.visit("/");
+        cy.get("#Tennis")
+        .click()
+
+        cy.visit("/subscribe");
+        cy.get("#root > div.subscribes > div.sport-bar > div > div > div:nth-child(1)").should("exist")
+        cy.get("#root > div.subscribes > div.sport-bar > div > div > div:nth-child(1) > p").should("contain.text", "Tennis")
+    })
   });
 
 
