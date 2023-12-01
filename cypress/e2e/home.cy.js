@@ -1,12 +1,12 @@
 describe("Home page detail", () => {
     beforeEach(() => {
-      cy.visit("/");
-      cy.get('#Email').type('cypress_testing@cypress.com');
-      cy.get('#password').type('cypress123');
+        cy.visit("/");
+        cy.get('#Email').type('cypress_testing@cypress.com');
+        cy.get('#password').type('cypress123');
 
-      cy.get('#button_auth').click();
+        cy.get('#button_auth').click();
     });
-  
+
     it("Can see Upcoming Detail", () => {
         cy.get('.upcoming')
         .should('exist') 
@@ -46,19 +46,18 @@ describe("Home page detail", () => {
         cy.get("#root > div.subscribes > div.sport-bar > div > div > div:nth-child(1)").should("exist")
         cy.get("#root > div.subscribes > div.sport-bar > div > div > div:nth-child(1) > p").should("contain.text", "Tennis")
     })
-  });
+});
 
 
-
-  describe("Homepage Sport Search", () => {
+describe("Homepage Sport Search", () => {
     beforeEach(() => {
-      cy.visit("/");
-      cy.get('#Email').type('cypress_testing@cypress.com');
-      cy.get('#password').type('cypress123');
+        cy.visit("/");
+        cy.get('#Email').type('cypress_testing@cypress.com');
+        cy.get('#password').type('cypress123');
 
-      cy.get('#button_auth').click();
+        cy.get('#button_auth').click();
     });
-  
+
     it("Can search sport", () => {
         cy.get("#scroll-sport-section > div:nth-child(3) > div.sport-name")
         .should('not.have.text', 'Badminton');
@@ -71,8 +70,4 @@ describe("Home page detail", () => {
     });
 
 
-  });
-
-
-
-  
+});
