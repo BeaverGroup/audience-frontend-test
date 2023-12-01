@@ -1,4 +1,4 @@
-describe("Login/Register Account", () => {
+describe("Register Account", () => {
   beforeEach(() => {
     cy.visit("/");
   });
@@ -27,6 +27,12 @@ describe("Login/Register Account", () => {
     cy.get("#form_auth").submit();
     cy.url().should("eq", "http://localhost:4001/sign-up"); // still on sign up page
   });
+});
+
+describe("Login Account", () => {
+  beforeEach(() => {
+    cy.visit("/");
+  });
 
   it("FT_LOGIN_3:  Log in by having an account", () => {
     cy.visit("/");
@@ -42,12 +48,4 @@ describe("Login/Register Account", () => {
     cy.get("#form_auth").submit();
     cy.get("#swal2-title").should("contain", "Password or Email is wrong");
   });
-
-  // it("Log in by Google Account", () => {
-  //   cy.visit("/");
-  //   cy.get("#container_auth_button > div").click();
-  //   cy.origin("https://accounts.google.com/", () => {
-  //     cy.get("#identifierId").type(Cypress.env('google_email'))
-  //   });
-  // });
 });
