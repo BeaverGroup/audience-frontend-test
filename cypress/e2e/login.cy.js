@@ -3,7 +3,7 @@ describe("Login/Register Account", () => {
     cy.visit("/");
   });
 
-  it("Log in by sign in a new account", () => {
+  it("FT_LOGIN_1:  Log in by sign in a new account", () => {
     cy.visit("/sign-up");
     cy.get("#Email").type("vvtest1@gmail.com", { force: true });
     cy.get("#Name").type("vvtest1", { force: true });
@@ -15,7 +15,7 @@ describe("Login/Register Account", () => {
     cy.get("#form_auth").submit();
   });
 
-  it("Log in by sign in a new account but wrong email format", () => {
+  it("FT_LOGIN_2:  Log in by sign in a new account but wrong email format", () => {
     cy.visit("/sign-up");
     cy.get("#Email").type("vvtest1", { force: true });
     cy.get("#Name").type("vvtest1", { force: true });
@@ -28,14 +28,14 @@ describe("Login/Register Account", () => {
     cy.url().should("eq", "http://localhost:4001/sign-up"); // still on sign up page
   });
 
-  it("Log in by having an account", () => {
+  it("FT_LOGIN_3:  Log in by having an account", () => {
     cy.visit("/");
     cy.get("#Email").type("vvtest@gmail.com", { force: true });
     cy.get("#password").type("password", { force: true });
     cy.get("#form_auth").submit();
   });
 
-  it("Log in by having an account but invalid email or password", () => {
+  it("FT_LOGIN_4:  Log in by having an account but invalid email or password", () => {
     cy.visit("/");
     cy.get("#Email").type("vvtest@gmail.com", { force: true });
     cy.get("#password").type("passwordkkk", { force: true });

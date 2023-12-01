@@ -7,12 +7,12 @@ describe("Home page detail", () => {
         cy.get('#button_auth').click();
     });
 
-    it("Can see Upcoming Detail", () => {
+    it("FT_HOME_1: Can see Upcoming Detail", () => {
         cy.get('.upcoming')
         .should('exist') 
     });
 
-    it("Can go to the Upcoming Detail page", () => {
+    it("FT_HOME_2: Can go to the Upcoming Detail page", () => {
         cy.get('.upcoming-title')
             .should('exist') 
             .click();
@@ -20,12 +20,12 @@ describe("Home page detail", () => {
         cy.url().should('include', '/upcoming'); 
     });
 
-    it("Can see sport result", () => {
+    it("FT_HOME_3: Can see sport result", () => {
         cy.get(".sport-result-card")
         .should('exist')
     })
 
-    it("Can go to sport result page", () => {
+    it("FT_HOME_3: Can go to sport result page", () => {
         cy.get("#root > div.homepage > div.section-2 > div.news-section > div.result-box > div > a > h1")
         .should('exist')
         .click()
@@ -33,7 +33,7 @@ describe("Home page detail", () => {
         cy.url().should('include', '/subscribe'); 
     })
 
-    it("Can subscribe sport from Homepage", () => {
+    it("FT_HOME_4: Can subscribe sport from Homepage", () => {
         cy.wait(1000);
         cy.visit("/subscribe");
         cy.get("#root > div.subscribes > div.sport-bar > div > div > div:nth-child(1)").should("not.exist")
@@ -58,7 +58,7 @@ describe("Homepage Sport Search", () => {
         cy.get('#button_auth').click();
     });
 
-    it("Can search sport", () => {
+    it("FT_HOME_5: Can search sport", () => {
         cy.get("#scroll-sport-section > div:nth-child(3) > div.sport-name")
         .should('not.have.text', 'Badminton');
 
